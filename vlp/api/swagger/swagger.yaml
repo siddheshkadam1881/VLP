@@ -24,37 +24,31 @@ paths:
 post:
       operationId: save
       description: add a new learner..
-      # movie info to be stored
-      # [{"learner_id" : request.POST['learner_id'],
-      #       "username" : request.POST['username'],
-      #       "password" : request.POST['password'],
-      #       "techStack' : request.POST['techStack']}]
-
       parameters:
         - name: learner_id
           description: learner properties
           in: body
           required: true
           schema:
-            $ref: "#/definitions/Movie",
+            $ref: "#/definitions/Learner"
         - name: username
           description: learner properties
           in: body
           required: true
           schema:
-            $ref: "#/definitions/Movie",
+            $ref: "#/definitions/Learner"
         - name: password
           description: learner properties
           in: body
           required: true
           schema:
-            $ref: "#/definitions/Movie",
+            $ref: "#/definitions/Learner",
         - name: techStack
           description: learner properties
           in: body
           required: true
           schema:
-            $ref: "#/definitions/Movie",
+            $ref: "#/definitions/Learner"
 
       responses:
         "200":
@@ -65,10 +59,6 @@ post:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-
-
-
-
 
   /hello:
     # binds a127 app logic to a route
@@ -98,6 +88,28 @@ post:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
+  Learner:
+    required:
+    type: object
+    properties:
+      learner_id:
+        type: string
+        description: learner id put here
+      username:
+        type: string
+        description: username of learner put here
+      password:
+        type: string
+        description: password of learner put here
+      techStack:
+        type: string
+        description: techStack put here
+    required:
+      - learner_id
+      - username
+      - password
+      - techStack
+
   HelloWorldResponse:
     required:
       - message
