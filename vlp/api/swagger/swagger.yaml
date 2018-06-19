@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   version: "0.0.1"
-  title: Hello World App
+  title: VLP
 # during dev, should point to your local machine
 host: localhost:10010
 # https://vlp.bridgelabz.com/api/v1/lab/dev-machine/
@@ -19,9 +19,10 @@ consumes:
 produces:
   - application/json
 paths:
-  /create:
-    x-swagger-router-controller: learnerMachine_controller
-post:
+
+  /Learner:
+    x-swagger-router-controller: Learner
+    post:
       operationId: save
       description: add a new learner..
       parameters:
@@ -42,7 +43,7 @@ post:
           in: body
           required: true
           schema:
-            $ref: "#/definitions/Learner",
+            $ref: "#/definitions/Learner"
         - name: techStack
           description: learner properties
           in: body
@@ -59,129 +60,103 @@ post:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-  /destroy:
-    x-swagger-router-controller: learnerMachine_controller
-post:
-    operationId: destroy
-    description: Stop virtual Machine
-    parameters:
-      - name: learner_id
-        description: learner properties
-        in: body
-        required: true
-        schema:
-          $ref: "#/definitions/Learner"
-    responses:
-      "200":
-        description: Success
-        schema:
-          $ref: "#/definitions/SucessResponse"
-      default:
-        description: Error
-        schema:
-          $ref: "#/definitions/ErrorResponse"
+# /destroy:
+#     x-swagger-router-controller: learnerMachine_controller
+# post:
+#     operationId: destroy
+#     description: Stop virtual Machine
+#     parameters:
+#       - name: learner_id
+#         description: learner properties
+#         in: body
+#         required: true
+#         schema:
+#           $ref: "#/definitions/Learner"
+#     responses:
+#       "200":
+#         description: Success
+#         schema:
+#           $ref: "#/definitions/SucessResponse"
+#       default:
+#         description: Error
+#         schema:
+#           $ref: "#/definitions/ErrorResponse"
+#
+#   /start:
+#     x-swagger-router-controller: learnerMachine_controller
+# post:
+#     operationId: start
+#     description: start virtual Machine
+#     parameters:
+#       - name: learner_id
+#         description: learner properties
+#         in: body
+#         required: true
+#         schema:
+#           $ref: "#/definitions/Learner"
+#     responses:
+#       "200":
+#         description: Success
+#         schema:
+#           $ref: "#/definitions/SucessResponse"
+#       default:
+#         description: Error
+#         schema:
+#           $ref: "#/definitions/ErrorResponse"
+#
+#   /stop:
+#     x-swagger-router-controller: learnerMachine_controller
+# post:
+#     operationId: stop
+#     description: stop virtual Machine
+#     parameters:
+#       - name: learner_id
+#         description: learner properties
+#         in: body
+#         required: true
+#         schema:
+#           $ref: "#/definitions/Learner"
+#     responses:
+#       "200":
+#         description: Success
+#         schema:
+#           $ref: "#/definitions/SucessResponse"
+#       default:
+#         description: Error
+#         schema:
+#           $ref: "#/definitions/ErrorResponse"
 
-  /start:
-    x-swagger-router-controller: learnerMachine_controller
-post:
-    operationId: start
-    description: start virtual Machine
-    parameters:
-      - name: learner_id
-        description: learner properties
-        in: body
-        required: true
-        schema:
-          $ref: "#/definitions/Learner"
-    responses:
-      "200":
-        description: Success
-        schema:
-          $ref: "#/definitions/SucessResponse"
-      default:
-        description: Error
-        schema:
-          $ref: "#/definitions/ErrorResponse"
-
-  /stop:
-    x-swagger-router-controller: learnerMachine_controller
-post:
-    operationId: stop
-    description: stop virtual Machine
-    parameters:
-      - name: learner_id
-        description: learner properties
-        in: body
-        required: true
-        schema:
-          $ref: "#/definitions/Learner"
-    responses:
-      "200":
-        description: Success
-        schema:
-          $ref: "#/definitions/SucessResponse"
-      default:
-        description: Error
-        schema:
-          $ref: "#/definitions/ErrorResponse"
-
-
-
-  # /hello:
-  #   # binds a127 app logic to a route
-  #   x-swagger-router-controller: hello_world
-  #   get:
-  #     description: Returns 'Hello' to the caller
-  #     # used as the method name of the controller
-  #     operationId: hello
-  #     parameters:
-  #       - name: name
-  #         in: query
-  #         description: The name of the person to whom to say hello
-  #         required: false
-  #         type: string
-  #     responses:
-  #       "200":
-  #         description: Success
-  #         schema:
-  #           # a pointer to a definition
-  #           $ref: "#/definitions/SucessResponse"
-  #       # responses may fall through to errors
-  #       default:
-  #         description: Error
-  #         schema:
-  #           $ref: "#/definitions/ErrorResponse"
-  /swagger:
+/swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
   Learner:
-    required:
     type: object
-    properties:
-      learner_id:
-        type: string
-        description: learner id put here
-      username:
-        type: string
-        description: username of learner put here
-      password:
-        type: string
-        description: password of learner put here
-      techStack:
-        type: string
-        description: techStack put here
     required:
-      - learner_id
-      - username
-      - password
-      - techStack
+         - username
+         - password
+         - techStack
+         - learner_id
+    properties:
+        learner_id:
+            type: string
+            description: learner id put here
+        username:
+            type: string
+            description: username of learner put here
+        password:
+            type: string
+            description: password of learner put here
+        techStack:
+            type: string
+            description: techStack put here
+
   SucessResponse:
     required:
       - message
     properties:
-      message:
-        type: string
+          message:
+            type: string
   ErrorResponse:
     required:
       - message
