@@ -26,30 +26,13 @@ paths:
       operationId: save
       description: add a new learner..
       parameters:
-        - name: learner_id
-          description: learner properties
-          in: body
+        - in: body
+          name: requestParameter
           required: true
           schema:
-            $ref: "#/definitions/Learner"
-        - name: username
-          description: learner properties
-          in: body
-          required: true
-          schema:
-            $ref: "#/definitions/Learner"
-        - name: password
-          description: learner properties
-          in: body
-          required: true
-          schema:
-            $ref: "#/definitions/Learner"
-        - name: techStack
-          description: learner properties
-          in: body
-          required: true
-          schema:
-            $ref: "#/definitions/Learner"
+            type: array
+            items:
+              $ref: '#/definitions/learnerObject'
       responses:
         "200":
           description: Success
@@ -60,96 +43,17 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-# /destroy:
-#     x-swagger-router-controller: learnerMachine_controller
-# post:
-#     operationId: destroy
-#     description: Stop virtual Machine
-#     parameters:
-#       - name: learner_id
-#         description: learner properties
-#         in: body
-#         required: true
-#         schema:
-#           $ref: "#/definitions/Learner"
-#     responses:
-#       "200":
-#         description: Success
-#         schema:
-#           $ref: "#/definitions/SucessResponse"
-#       default:
-#         description: Error
-#         schema:
-#           $ref: "#/definitions/ErrorResponse"
-#
-#   /start:
-#     x-swagger-router-controller: learnerMachine_controller
-# post:
-#     operationId: start
-#     description: start virtual Machine
-#     parameters:
-#       - name: learner_id
-#         description: learner properties
-#         in: body
-#         required: true
-#         schema:
-#           $ref: "#/definitions/Learner"
-#     responses:
-#       "200":
-#         description: Success
-#         schema:
-#           $ref: "#/definitions/SucessResponse"
-#       default:
-#         description: Error
-#         schema:
-#           $ref: "#/definitions/ErrorResponse"
-#
-#   /stop:
-#     x-swagger-router-controller: learnerMachine_controller
-# post:
-#     operationId: stop
-#     description: stop virtual Machine
-#     parameters:
-#       - name: learner_id
-#         description: learner properties
-#         in: body
-#         required: true
-#         schema:
-#           $ref: "#/definitions/Learner"
-#     responses:
-#       "200":
-#         description: Success
-#         schema:
-#           $ref: "#/definitions/SucessResponse"
-#       default:
-#         description: Error
-#         schema:
-#           $ref: "#/definitions/ErrorResponse"
-
-/swagger:
-    x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-  Learner:
+  learnerObject:
     type: object
-    required:
-         - username
-         - password
-         - techStack
-         - learner_id
     properties:
-        learner_id:
-            type: string
-            description: learner id put here
-        username:
-            type: string
-            description: username of learner put here
-        password:
-            type: string
-            description: password of learner put here
-        techStack:
-            type: string
-            description: techStack put here
+      learner_id:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
 
   SucessResponse:
     required:
