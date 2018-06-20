@@ -20,8 +20,8 @@ produces:
   - application/json
 paths:
 
-  /Learner:
-    x-swagger-router-controller: Learner
+  /create:
+    x-swagger-router-controller: create
     post:
       operationId: save
       description: add a new learner..
@@ -43,6 +43,53 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /destroy:
+    x-swagger-router-controller: destroy
+    post:
+      operationId: destroy
+      description: add a new learner..
+      parameters:
+        - in: body
+          name: requestParameter
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/destroyObject'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SucessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+    # /start:
+    #   x-swagger-router-controller: start
+    #   post:
+    #     operationId: start
+    #     description: start learning..
+    #     parameters:
+    #       - in: body
+    #         name: requestParameter
+    #         required: true
+    #         schema:
+    #           type: array
+    #           items:
+    #             $ref: '#/definitions/startObject'
+    #     responses:
+    #       "200":
+    #         description: Success
+    #         schema:
+    #           $ref: sssssssss"#/definitions/SucessResponse"
+    #       default:
+    #         description: Error
+    #         schema:
+    #           $ref: "#/definitions/ErrorResponse"
+
+
 # complex objects have schema definitions
 definitions:
   learnerObject:
@@ -54,6 +101,16 @@ definitions:
         type: string
       password:
         type: string
+  destroyObject:
+    type: object
+    properties:
+      learner_id:
+        type: string
+  # startObject:
+  #   type: object
+  #   properties:
+  #     username:
+  #       type: string
 
   SucessResponse:
     required:
