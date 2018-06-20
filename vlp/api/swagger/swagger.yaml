@@ -20,6 +20,29 @@ produces:
   - application/json
 paths:
 
+  /register:
+    x-swagger-router-controller: register
+    post:
+      operationId: register
+      description: register a new learner here..
+      parameters:
+        - in: body
+          name: requestParameter
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/registerObject'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SucessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /create:
     x-swagger-router-controller: create
     post:
@@ -114,6 +137,34 @@ paths:
 
 # complex objects have schema definitions
 definitions:
+  registerObject:
+    type: object
+    properties:
+      #first, last name, email, fellowship program, duration, start date, end dates, city, company
+      first_name:
+        type: string
+      last_name:
+        type: string
+      Role:
+        type: string
+      email:
+        type: string
+      fellowship program:
+        type: string
+      duration:
+        type: string
+      start_date:
+        type: string
+      end_date:
+        type: string
+      city:
+        type: string
+      company:
+        type: string
+
+
+
+
   learnerObject:
     type: object
     properties:
