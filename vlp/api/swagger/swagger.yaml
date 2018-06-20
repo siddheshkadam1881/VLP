@@ -192,11 +192,17 @@ definitions:
 
 
   SucessResponse:
-    required:
-      - message
+    type: object
     properties:
-          message:
-            type: string
+      success:
+        type: number
+        description: returns 1 if successful
+      description:
+        type: string
+        description: a short comment
+    required:
+      - success
+      - description
   ErrorResponse:
     required:
       - message
