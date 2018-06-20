@@ -5,6 +5,9 @@
 logs
 *.log
 
+#node_modules hide
+.node_modules
+
 # Runtime data
 pids
 *.pid
