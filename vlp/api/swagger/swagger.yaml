@@ -87,29 +87,29 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /stop:
+    x-swagger-router-controller: stop
+    post:
+      operationId: stop
+      description: add a new learner..
+      parameters:
+        - in: body
+          name: requestParameter
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/stopObject'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SucessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
 
-    # /start:
-    #   x-swagger-router-controller: start
-    #   post:
-    #     operationId: start
-    #     description: start learning..
-    #     parameters:
-    #       - in: body
-    #         name: requestParameter
-    #         required: true
-    #         schema:
-    #           type: array
-    #           items:
-    #             $ref: '#/definitions/startObject'
-    #     responses:
-    #       "200":
-    #         description: Success
-    #         schema:
-    #           $ref: sssssssss"#/definitions/SucessResponse"
-    #       default:
-    #         description: Error
-    #         schema:
-    #           $ref: "#/definitions/ErrorResponse"
 
 
 # complex objects have schema definitions
@@ -133,6 +133,12 @@ definitions:
     properties:
       username:
         type: string
+  stopObject:
+    type: object
+    properties:
+      username:
+        type: string
+
 
   SucessResponse:
     required:
