@@ -9,7 +9,7 @@ module.exports = function() {
 		 * Save the movie inside the "db".
 		 */
 		register(user) {
-			movie.id = crypto.randomBytes(20).toString('hex'); // fast enough for our purpose
+			user.id = crypto.randomBytes(20).toString('hex'); // fast enough for our purpose
 			this.userList.push(user);
 			return 1;
 		}

@@ -7,7 +7,7 @@
 
 
 
- 	//POST /movie operationId
- 	function register(req, res, next) {
- 		res.json({success: db.save(req.body), description: "user is  added to the list!"});
+
+ 	function register(req, res) {
+ 		res.json({success: db.register(req.body), description: "user is  added to the list!"});
  	}

@@ -21,7 +21,7 @@ produces:
 paths:
 
   /register:
-    x-swagger-router-controller: register
+    x-swagger-router-controller: user
     post:
       operationId: register
       description: register a new learner here..
