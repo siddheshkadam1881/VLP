@@ -9,5 +9,6 @@
 
 
  	function register(req, res) {
+    console.log("yellow")
  		res.json({success: db.register(req.body), description: "user is  added to the list!"});
  	}
