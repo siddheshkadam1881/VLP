@@ -145,6 +145,8 @@ definitions:
         type: string
       last_name:
         type: string
+      userpassword:
+        type: string 
       Role:
         type: string
       email:
@@ -161,6 +163,7 @@ definitions:
         type: string
       company:
         type: string
+
 
 
 

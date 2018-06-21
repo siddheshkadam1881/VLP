@@ -8,9 +8,14 @@
   "license": "",
   "main": "app.js",
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "connect": "^3.3.5",
     "crypto": "^1.0.1",
-    "swagger-connect": "^0.1.0"
+    "express-logger": "0.0.3",
+    "express-validator": "^5.2.0",
+    "jsonwebtoken": "^8.3.0",
+    "swagger-connect": "^0.1.0",
+    "winston": "^3.0.0"
   },
   "devDependencies": {
     "should": "^7.1.0",
